@@ -13,6 +13,7 @@ import java.util.Date;
 public class Showing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_showing")
     private Long id_showing;
 
     @Column(nullable = false, updatable = false)
@@ -22,8 +23,10 @@ public class Showing {
     private Float price;
 
     private Long movie_id;
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "room_id",referencedColumnName = "id_showing")
+    private Room room;
 
-    private Long room_id;
 
     public Long getId_showing(){
         return id_showing;
@@ -55,12 +58,12 @@ public class Showing {
         this.movie_id = movie_id;
     }
 
-    public Long getRoom_id() {
-        return room_id;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setRoom_id(Long room_id) {
-        this.room_id = room_id;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 }
 

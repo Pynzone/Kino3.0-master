@@ -41,7 +41,7 @@ public class ShowingService {
         showing.setDate(showingDetails.getDate());
         showing.setMovie_id(showingDetails.getMovie_id());
         showing.setPrice(showingDetails.getPrice());
-        showing.setRoom_id(showingDetails.getRoom_id());
+        showing.setRoom(showingDetails.getRoom());
         Showing updatedShowing = showingRepository.save(showing);
         return updatedShowing;
     }
