@@ -12,7 +12,7 @@ public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_place;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)//fetchType.Lazy to leniwe ładwanie danych, nie będą od razu doczytane, tylko na bieżąco w ramach działania aplikacji i w razie potrzeby
     @JoinColumn(name = "room_id", nullable = false)
     private Room room;
     private Long number;

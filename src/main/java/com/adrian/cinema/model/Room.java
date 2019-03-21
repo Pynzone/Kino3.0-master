@@ -14,9 +14,7 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_room;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Place.class,  mappedBy = "place")
-    private Place place;
-
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Place.class,  mappedBy = "room")
     private Set<Place>places = new HashSet<Place>();
     private String name;
 
@@ -30,13 +28,6 @@ public class Room {
 
     public void setId_room(Long id_room) {
         this.id_room = id_room;
-    }
-    public void setPlace(Place place){
-        this.place=place;
-    }
-
-    public Place getPlace() {
-        return place;
     }
 
     public String getName() {
