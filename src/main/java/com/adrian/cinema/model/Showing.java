@@ -19,7 +19,7 @@ public class Showing {
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-    @NotBlank
+
     private Float price;
 
     private Long movie_id;
