@@ -1,5 +1,6 @@
 package com.adrian.cinema.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -12,26 +13,34 @@ import java.util.Date;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_movie;
+    @Column(name = "id_movie")
+    private Long movieId;
+
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date premiere;
     private String type;
-    private String age_category;
+
+    @Column(name = "ageCategory")
+    private String ageCategory;
     private Long duration;
     private String direction;
     private String cast;
     private String scenario;
     private String dyscryption;
-    private Long showing_id;
 
-    public Long getId_movie(){
-        return id_movie;
+    @OneToOne(mappedBy = "movie")
+    @JsonIgnore
+    private Showing showing;
+
+    public Long getMovieId() {
+        return movieId;
     }
 
-    public void setId_movie(Long id_movie) {
-        this.id_movie = id_movie;
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
     }
+
     public Date getPremiere(){
         return premiere;
     }
@@ -44,12 +53,12 @@ public class Movie {
         this.type = type;
     }
 
-    public String getAge_category() {
-        return age_category;
+    public String getAgeCategory() {
+        return ageCategory;
     }
 
-    public void setAge_category(String age_category) {
-        this.age_category = age_category;
+    public void setAgeCategory(String ageCategory) {
+        this.ageCategory = ageCategory;
     }
 
     public Long getDuration() {
@@ -88,19 +97,19 @@ public class Movie {
         this.premiere = premiere;
     }
 
-    public Long getShowing_id() {
-        return showing_id;
-    }
-
-    public void setShowing_id(Long showing_id) {
-        this.showing_id = showing_id;
-    }
-
     public String getDyscryption() {
         return dyscryption;
     }
 
     public void setDyscryption(String dyscryption) {
         this.dyscryption = dyscryption;
+    }
+
+    public Showing getShowing() {
+        return showing;
+    }
+
+    public void setShowing(Showing showing) {
+        this.showing = showing;
     }
 }
