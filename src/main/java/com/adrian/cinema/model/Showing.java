@@ -8,9 +8,10 @@ import java.util.Date;
 
 @Entity
 @Access(AccessType.FIELD)
-@Table(name="showing")
+@Table(name = "showing")
 @EntityListeners(AuditingEntityListener.class)
 public class Showing {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_showing")
@@ -23,17 +24,19 @@ public class Showing {
     private Float price;
 
     private Long movie_id;
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "room_id",referencedColumnName = "id_room")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "room_id", referencedColumnName = "id_room")
     private Room room;
 
 
-    public Long getId_showing(){
+    public Long getId_showing() {
         return id_showing;
     }
-    public void setId_showing(Long id_showing){
-        this.id_showing=id_showing;
+
+    public void setId_showing(Long id_showing) {
+        this.id_showing = id_showing;
     }
+
     public Date getDate() {
         return date;
     }
