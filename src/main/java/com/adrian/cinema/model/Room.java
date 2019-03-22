@@ -16,17 +16,14 @@ public class Room {
     private Long id_room;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Place.class,  mappedBy = "room")
     private Set<Place>places = new HashSet<Place>();
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Showing.class,mappedBy = "room")
-    private Set<Showing>showings = new HashSet<>();
+    @OneToOne(mappedBy = "room")
+    private Showing showing;
     private String name;
 
     public Set<Place> getPlaces() {
         return this.places;
     }
-    public Set<Showing> getShowings(){
-        return this.showings;
-    }
+
 
     public Long getId_room() {
         return id_room;
@@ -42,5 +39,13 @@ public class Room {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Showing getShowing() {
+        return showing;
+    }
+
+    public void setShowing(Showing showing) {
+        this.showing = showing;
     }
 }

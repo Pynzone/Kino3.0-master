@@ -24,7 +24,7 @@ public class Showing {
 
     private Long movie_id;
     @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "room_id",referencedColumnName = "id_showing")
+    @JoinColumn(name = "room_id",referencedColumnName = "id_room")
     private Room room;
 
 
