@@ -39,7 +39,7 @@ public class ShowingService {
                 orElseThrow(() -> new ResourceNotFoundException("Showing", "id_showing", showingId));
 
         showing.setDate(showingDetails.getDate());
-        showing.setMovie_id(showingDetails.getMovie_id());
+        showing.setMovie(showingDetails.getMovie());
         showing.setPrice(showingDetails.getPrice());
         showing.setRoom(showingDetails.getRoom());
         Showing updatedShowing = showingRepository.save(showing);

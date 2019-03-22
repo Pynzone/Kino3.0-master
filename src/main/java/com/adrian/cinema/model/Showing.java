@@ -8,32 +8,36 @@ import java.util.Date;
 
 @Entity
 @Access(AccessType.FIELD)
-@Table(name="showing")
+@Table(name = "showing")
 @EntityListeners(AuditingEntityListener.class)
 public class Showing {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_showing")
-    private Long id_showing;
+    private Long showingId;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-
     private Float price;
 
-    private Long movie_id;
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "room_id",referencedColumnName = "id_room")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "room_id", referencedColumnName = "id_room")
     private Room room;
 
+    @OneToOne()
+    @JoinColumn(name = "movie_id", referencedColumnName = "id_movie")
+    private Movie movie;
 
-    public Long getId_showing(){
-        return id_showing;
+    public Long getShowingId() {
+        return showingId;
     }
-    public void setId_showing(Long id_showing){
-        this.id_showing=id_showing;
+
+    public void setShowingId(Long showingId) {
+        this.showingId = showingId;
     }
+
     public Date getDate() {
         return date;
     }
@@ -50,20 +54,20 @@ public class Showing {
         this.price = price;
     }
 
-    public Long getMovie_id() {
-        return movie_id;
-    }
-
-    public void setMovie_id(Long movie_id) {
-        this.movie_id = movie_id;
-    }
-
     public Room getRoom() {
         return room;
     }
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }
 

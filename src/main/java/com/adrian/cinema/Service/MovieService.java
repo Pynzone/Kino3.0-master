@@ -1,15 +1,12 @@
 package com.adrian.cinema.Service;
 
-import com.adrian.cinema.controller.MovieController;
 import com.adrian.cinema.exception.ResourceNotFoundException;
 import com.adrian.cinema.model.Movie;
 import com.adrian.cinema.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Service
@@ -40,7 +37,7 @@ public class MovieService {
 
         movie.setPremiere(movieDetails.getPremiere());
         movie.setType(movieDetails.getType());
-        movie.setAge_category(movieDetails.getAge_category());
+        movie.setAgeCategory(movieDetails.getAgeCategory());
         movie.setDuration(movieDetails.getDuration());
         movie.setDirection(movieDetails.getDirection());
         movie.setCast(movieDetails.getCast());
