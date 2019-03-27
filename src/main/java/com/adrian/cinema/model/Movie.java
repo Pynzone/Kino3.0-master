@@ -17,7 +17,6 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_movie")
     private Long movieId;
-
     @Column(name = "premiere")
     @Temporal(TemporalType.TIMESTAMP)
     private Date premiere;
