@@ -5,6 +5,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Access(AccessType.FIELD)
@@ -29,9 +31,11 @@ public class Movie {
     private String scenario;
     private String dyscryption;
 
-    @OneToOne(mappedBy = "movie")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Showing.class,  mappedBy = "movie")
     @JsonIgnore
-    private Showing showing;
+    private Set<Showing> showings = new HashSet<Showing>();
+
+
 
     public Long getMovieId() {
         return movieId;
@@ -105,11 +109,12 @@ public class Movie {
         this.dyscryption = dyscryption;
     }
 
-    public Showing getShowing() {
-        return showing;
+    public Set<Showing> getShowings() {
+        return showings;
+    }
+    public void setShowings(Set<Showing> showings){
+        this.showings=showings;
     }
 
-    public void setShowing(Showing showing) {
-        this.showing = showing;
-    }
+
 }

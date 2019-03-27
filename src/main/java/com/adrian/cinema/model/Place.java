@@ -13,7 +13,8 @@ public class Place {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_place;
+    @Column(name = "id_place")
+    private Long placeId;
 
 //    @ManyToOne(fetch = FetchType.LAZY)//fetchType.Lazy to leniwe ładwanie danych,
     // nie będą od razu doczytane, tylko na bieżąco w ramach działania aplikacji i w razie potrzeby
@@ -34,12 +35,12 @@ public class Place {
         this.room = room;
     }
 
-    public Long getId_place() {
-        return id_place;
+    public Long getPlaceId() {
+        return placeId;
     }
 
-    public void setId_place(Long id_place) {
-        this.id_place = id_place;
+    public void setPlaceId(Long placeId) {
+        this.placeId = placeId;
     }
 
     public Long getNumber() {

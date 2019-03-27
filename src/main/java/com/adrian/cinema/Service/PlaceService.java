@@ -41,6 +41,7 @@ public class PlaceService {
         place.setRoom(placeDetails.getRoom());
         place.setReservation_id(placeDetails.getReservation_id());
 
+
         Place updatedPlace = placeRepository.save(place);
         return updatedPlace;
 

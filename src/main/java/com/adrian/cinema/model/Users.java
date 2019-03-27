@@ -12,7 +12,8 @@ import javax.validation.constraints.NotBlank;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_user;
+    @Column(name = "id_user")
+    private Long userId;
     @Column(name = "email", nullable = false)
     @NotBlank
     private String email;
@@ -24,12 +25,12 @@ public class Users {
     private String surname;
     private Long phone;
 
-    public Long getId_usser() {
-        return id_user;
+    public Long getId_user() {
+        return userId;
     }
 
-    public void setId_usser(Long id_usser) {
-        this.id_user = id_usser;
+    public void setId_user(Long userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

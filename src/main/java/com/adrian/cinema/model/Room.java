@@ -14,7 +14,8 @@ import java.util.Set;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_room;
+    @Column(name = "id_room")
+    private Long roomId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Place.class,  mappedBy = "room")
     private Set<Place>places = new HashSet<Place>();
@@ -26,11 +27,11 @@ public class Room {
     private String name;
 
     public Long getId_room() {
-        return id_room;
+        return roomId;
     }
 
-    public void setId_room(Long id_room) {
-        this.id_room = id_room;
+    public void setId_room(Long roomId) {
+        this.roomId = roomId;
     }
 
     public Showing getShowing() {
