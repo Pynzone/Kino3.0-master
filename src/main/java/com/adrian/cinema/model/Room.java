@@ -23,7 +23,7 @@ public class Room {
     @OneToOne(mappedBy = "room")
     @JsonIgnore
     private Showing showing;
-
+    @Column(name = "name")
     private String name;
 
     public Long getId_room() {

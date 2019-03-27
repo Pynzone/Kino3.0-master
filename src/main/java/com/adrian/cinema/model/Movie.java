@@ -18,19 +18,23 @@ public class Movie {
     @Column(name = "id_movie")
     private Long movieId;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "premiere")
     @Temporal(TemporalType.TIMESTAMP)
     private Date premiere;
+    @Column(name = "type")
     private String type;
-
     @Column(name = "ageCategory")
     private String ageCategory;
+    @Column(name = "duration")
     private Long duration;
+    @Column(name = "direction")
     private String direction;
+    @Column(name = "cast")
     private String cast;
+    @Column(name = "scenario")
     private String scenario;
+    @Column(name = "dyscryption")
     private String dyscryption;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Showing.class,  mappedBy = "movie")
     @JsonIgnore
     private Set<Showing> showings = new HashSet<Showing>();

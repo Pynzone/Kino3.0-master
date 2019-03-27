@@ -17,12 +17,13 @@ public class Users {
     @Column(name = "email", nullable = false)
     @NotBlank
     private String email;
-    @Column(nullable = false)
+    @Column(name = "name",nullable = false)
     @NotBlank
     private String name;
-    @Column(nullable = false)
+    @Column(name = "surname",nullable = false)
     @NotBlank
     private String surname;
+    @Column(name = "phone")
     private Long phone;
 
     public Long getId_user() {

@@ -18,17 +18,18 @@ public class Showing {
     @Column(name = "id_showing")
     private Long showingId;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "date",nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+    @Column(name = "price")
     private Float price;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "room_id", referencedColumnName = "id_room")
+    @JoinColumn(name = "id_room", referencedColumnName = "id_room")
     private Room room;
 
     @ManyToOne()
-    @JoinColumn(name = "movie_id", nullable = false)
+    @JoinColumn(name = "id_movie", nullable = false)
     private Movie movie;
 
     public Long getShowingId() {
