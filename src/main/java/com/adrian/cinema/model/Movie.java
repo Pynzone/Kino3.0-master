@@ -5,6 +5,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Access(AccessType.FIELD)
@@ -15,23 +17,28 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_movie")
     private Long movieId;
-
-    @Column(nullable = false, updatable = false)
+    @Column(name = "premiere")
     @Temporal(TemporalType.TIMESTAMP)
     private Date premiere;
+    @Column(name = "type")
     private String type;
-
     @Column(name = "ageCategory")
     private String ageCategory;
+    @Column(name = "duration")
     private Long duration;
+    @Column(name = "direction")
     private String direction;
+    @Column(name = "cast")
     private String cast;
+    @Column(name = "scenario")
     private String scenario;
+    @Column(name = "dyscryption")
     private String dyscryption;
-
-    @OneToOne(mappedBy = "movie")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Showing.class,  mappedBy = "movie")
     @JsonIgnore
-    private Showing showing;
+    private Set<Showing> showings = new HashSet<Showing>();
+
+
 
     public Long getMovieId() {
         return movieId;
@@ -105,11 +112,12 @@ public class Movie {
         this.dyscryption = dyscryption;
     }
 
-    public Showing getShowing() {
-        return showing;
+    public Set<Showing> getShowings() {
+        return showings;
+    }
+    public void setShowings(Set<Showing> showings){
+        this.showings=showings;
     }
 
-    public void setShowing(Showing showing) {
-        this.showing = showing;
-    }
+
 }

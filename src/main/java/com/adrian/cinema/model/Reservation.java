@@ -12,29 +12,32 @@ public class Reservation
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_reservation;
-    private  Long usser_id;
-    private  Long showing_id;
+    @Column(name = "id_reservation")
+    private Long reservationId;
+    @Column(name ="id_user")
+    private  Long idUser;
+    @Column(name = "id_showing")
+    private  Long idShowing;
 
     public Long getIdReservation() {
-        return id_reservation;
+        return reservationId;
     }
 
-    public void setId_reservation(Long id_reservation) {
-        this.id_reservation = id_reservation;
+    public void setId_reservation(Long reservationId) {
+        this.reservationId = reservationId;
     }
     public Long getUsserId(){
-        return usser_id;
+        return idUser;
     }
 
-    public void setUsserId(Long usser_id) {
-        this.usser_id = usser_id;
+    public void setUsserId(Long idUser) {
+        this.idUser = idUser;
     }
     public Long getShowingId(){
-        return showing_id;
+        return idShowing;
     }
 
-    public void setShowingId(Long showing_id) {
-        this.showing_id = showing_id;
+    public void setShowingId(Long idShowing) {
+        this.idShowing = idShowing;
     }
 }

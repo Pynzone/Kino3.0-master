@@ -13,18 +13,22 @@ public class Place {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_place;
-
-//    @ManyToOne(fetch = FetchType.LAZY)//fetchType.Lazy to leniwe ładwanie danych,
+    @Column(name = "id_place")
+    private Long placeId;
+    //@ManyToOne(fetch = FetchType.LAZY)//fetchType.Lazy to leniwe ładwanie danych,
     // nie będą od razu doczytane, tylko na bieżąco w ramach działania aplikacji i w razie potrzeby
     @ManyToOne()
-    @JoinColumn(name = "room_id", nullable = false)
+    @JoinColumn(name = "id_room", nullable = false)
     @JsonIgnore
     private Room room;
+    @Column(name = "number")
     private Long number;
+    @Column(name = "row")
     private Long row;
+    @Column(name = "occupited")
     private Boolean occupited;
-    private Long reservation_id;
+    @Column(name = "id_reservation")
+    private Long reservationId;
 
     public Room getRoom() {
         return this.room;
@@ -34,12 +38,12 @@ public class Place {
         this.room = room;
     }
 
-    public Long getId_place() {
-        return id_place;
+    public Long getPlaceId() {
+        return placeId;
     }
 
-    public void setId_place(Long id_place) {
-        this.id_place = id_place;
+    public void setPlaceId(Long placeId) {
+        this.placeId = placeId;
     }
 
     public Long getNumber() {
@@ -59,11 +63,11 @@ public class Place {
     }
 
     public Long getReservation_id() {
-        return reservation_id;
+        return reservationId;
     }
 
-    public void setReservation_id(Long reservation_id) {
-        this.reservation_id = reservation_id;
+    public void setReservation_id(Long reservationId) {
+        this.reservationId = reservationId;
     }
 
     public Long getRow() {

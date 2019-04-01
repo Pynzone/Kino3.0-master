@@ -38,6 +38,7 @@ public class RoomService  {
         room.setName(roomDetails.getName());
         room.setShowing(roomDetails.getShowing());
 
+
         Room updatedRoom = roomRepository.save(room);
         return updatedRoom;
     }

@@ -1,5 +1,6 @@
 package com.adrian.cinema.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -17,17 +18,18 @@ public class Showing {
     @Column(name = "id_showing")
     private Long showingId;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "date",nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+    @Column(name = "price")
     private Float price;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "room_id", referencedColumnName = "id_room")
+    @JoinColumn(name = "id_room", referencedColumnName = "id_room")
     private Room room;
 
-    @OneToOne()
-    @JoinColumn(name = "movie_id", referencedColumnName = "id_movie")
+    @ManyToOne()
+    @JoinColumn(name = "id_movie", nullable = false)
     private Movie movie;
 
     public Long getShowingId() {
