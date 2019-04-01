@@ -6,10 +6,9 @@ import com.adrian.cinema.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
+
 @Service
 public class PlaceService {
     @Autowired
@@ -19,7 +18,6 @@ public class PlaceService {
     public List<Place> getAllPlace() {
         return placeRepository.findAll();
     }
-
 
     public Place createPlace(Place place) {
         return placeRepository.save(place);
@@ -32,7 +30,7 @@ public class PlaceService {
     }
 
 
-    public Place updatePlace(Long placeId,Place placeDetails) {
+    public Place updatePlace(Long placeId, Place placeDetails) {
         Place place = placeRepository.findById(placeId).
                 orElseThrow(() -> new ResourceNotFoundException("Place", "id_place", placeId));
         place.setNumber(placeDetails.getNumber());
