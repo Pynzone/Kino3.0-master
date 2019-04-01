@@ -36,9 +36,6 @@ public class RoomService  {
                 .orElseThrow(() -> new ResourceNotFoundException("Room", "id_room", roomId));
 
         room.setName(roomDetails.getName());
-        room.setShowing(roomDetails.getShowing());
-
-
         Room updatedRoom = roomRepository.save(room);
         return updatedRoom;
     }

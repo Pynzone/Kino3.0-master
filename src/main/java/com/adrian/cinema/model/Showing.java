@@ -24,13 +24,13 @@ public class Showing {
     @Column(name = "price")
     private Float price;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_room", referencedColumnName = "id_room")
+    @ManyToOne()
+    @JoinColumn(name = "id_room",nullable = false)
     private Room room;
 
     @ManyToOne()
     @JoinColumn(name = "id_movie", nullable = false)
-    private Movie movie;
+   private Movie movie;
 
     public Long getShowingId() {
         return showingId;
@@ -64,7 +64,7 @@ public class Showing {
         this.room = room;
     }
 
-    public Movie getMovie() {
+   public Movie getMovie() {
         return movie;
     }
 

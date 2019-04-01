@@ -116,7 +116,7 @@ public class Movie {
         return showings;
     }
     public void setShowings(Set<Showing> showings){
-        this.showings=showings;
+      //  this.showings=showings;
     }
 
 
