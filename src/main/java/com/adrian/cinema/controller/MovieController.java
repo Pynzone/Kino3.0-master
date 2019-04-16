@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class MovieController {
     private final MovieService movieService;
 
@@ -22,12 +23,12 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-   @GetMapping("/movie")
-   public List<Movie>findAllMovie()
+    @GetMapping("/movie")
+    public List<Movie>findAllMovie()
     {
         return movieService.findAllMovie();
     }
-    @PostMapping("/movie")
+    @PostMapping("/movie/create")
     public Movie createMovie(@RequestBody Movie movie) {
         return movieService.createMovie(movie);
     }

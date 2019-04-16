@@ -30,7 +30,7 @@ public class Showing {
 
     @ManyToOne()
     @JoinColumn(name = "id_movie", nullable = false)
-   private Movie movie;
+    private Movie movie;
 
     public Long getShowingId() {
         return showingId;

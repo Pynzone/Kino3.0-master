@@ -22,6 +22,8 @@ public class Movie {
     private Date premiere;
     @Column(name = "type")
     private String type;
+    @Column(name = "name")
+    private String name;
     @Column(name = "ageCategory")
     private String ageCategory;
     @Column(name = "duration")
@@ -34,6 +36,8 @@ public class Movie {
     private String scenario;
     @Column(name = "dyscryption")
     private String dyscryption;
+    @Column(name = "imgURL")
+    private  String imgURL;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Showing.class,  mappedBy = "movie")
     @JsonIgnore
     private Set<Showing> showings = new HashSet<Showing>();
@@ -116,8 +120,20 @@ public class Movie {
         return showings;
     }
     public void setShowings(Set<Showing> showings){
-      //  this.showings=showings;
+        this.showings=showings;
+    }
+    public String getName(){
+        return  name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getImgURL(){
+        return imgURL;
+    }
 
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
 }

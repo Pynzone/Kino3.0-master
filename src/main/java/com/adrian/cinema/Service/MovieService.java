@@ -43,6 +43,8 @@ public class MovieService {
         movie.setCast(movieDetails.getCast());
         movie.setScenario(movieDetails.getScenario());
         movie.setDyscryption(movieDetails.getDyscryption());
+        movie.setName(movieDetails.getName());
+        movie.setImgURL(movieDetails.getImgURL());
         Movie updatedMovie = movieRepository.save(movie);
         return updatedMovie;
 

@@ -20,10 +20,9 @@ public class Room {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Place.class,  mappedBy = "room")
     private Set<Place>places = new HashSet<Place>();
 
-
-   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Showing.class,  mappedBy = "room")
-   @JsonIgnore
-   private Set<Showing>showings = new HashSet<Showing>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Showing.class,  mappedBy = "room")
+    @JsonIgnore
+    private Set<Showing>showings = new HashSet<Showing>();
     @Column(name = "name")
     private String name;
 
@@ -37,17 +36,17 @@ public class Room {
 
     public Set<Showing> getShowings() {
         return showings;
-    }
+   }
     public void setShowings(Set<Showing> showings){
         this.showings=showings;
     }
 
-    public Set<Place> getPlaces() {
-        return places;
+     public Set<Place> getPlaces() {
+       return places;
     }
 
     public void setPlaces(Set<Place> places) {
-        this.places = places;
+       this.places = places;
     }
 
     public String getName() {

@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class ReservationController {
     private final ReservationService reservationService;
     @Autowired
